@@ -52,6 +52,7 @@ def get_user() -> Union[dict, None]:
 
 @app.before_request
 def before_request():
+    """Store user in flask.g object"""
     g.user = get_user()
 
 
