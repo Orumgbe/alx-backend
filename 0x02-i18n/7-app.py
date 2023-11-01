@@ -43,14 +43,14 @@ def get_timezone():
             pytz.timezone(tzone)
             return tzone
         except pytz.exceptions.UnknownTimeZoneError:
-            if g.user and g.user['timezone']:
-                try:
-                    pytz.timezone(g.user['timezone'])
-                except pytz.exceptions.UnknownTimeZoneError:
-                    return app.config['BABEL_DEFAULT_TIMEZONE']
-            else:
-                return app.config['BABEL_DEFAULT_TIMEZONE']
-    return app.config['BABEL_DEFAULT_TIMEZONE']
+            pass
+    elif g.user and g.user['timezone']:
+        try:
+            pytz.timezone(g.user['timezone'])
+        except pytz.exceptions.UnknownTimeZoneError:
+            return app.config['BABEL_DEFAULT_TIMEZONE']
+    else:
+        return app.config['BABEL_DEFAULT_TIMEZONE']
 
 
 @app.route("/", strict_slashes=False)
