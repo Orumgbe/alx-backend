@@ -3,6 +3,7 @@
 
 from flask import g, Flask, render_template, request
 from flask_babel import Babel
+from typing import Dict, Union
 
 app = Flask(__name__)
 
@@ -41,7 +42,7 @@ users = {
 }
 
 
-def get_user():
+def get_user() -> Union[Dict, None]:
     """Gets user ID and return user dictionary if found"""
     user_id = request.args.get('login_as')
     if user_id is not None:
