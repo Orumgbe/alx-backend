@@ -4,10 +4,10 @@
 from typing import Tuple
 
 
-def index_range(page : int, page_size : int) -> Tuple:
+def index_range(page: int, page_size: int) -> Tuple:
     """
         Takes two integer args
-        Returns a tuple of start and end index    
+        Returns a tuple of start and end index
         for the particular pagination parameters
     """
     end = page * page_size
