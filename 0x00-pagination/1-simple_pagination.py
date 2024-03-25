@@ -1,6 +1,20 @@
+#!/usr/bin/env python3
+"""Module holds server class for pagination"""
+
 import csv
 import math
 from typing import List, Tuple
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """
+        Takes two integer args
+        Returns a tuple of start and end index
+        for the particular pagination parameters
+    """
+    end = page * page_size
+    start = end - page_size
+    return (start, end)
 
 
 class Server:
@@ -30,14 +44,3 @@ class Server:
         if start >= len(self.dataset()):
             return []
         return self.dataset()[start:end]
-
-
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """
-        Takes two integer args
-        Returns a tuple of start and end index
-        for the particular pagination parameters
-    """
-    end = page * page_size
-    start = end - page_size
-    return (start, end)
