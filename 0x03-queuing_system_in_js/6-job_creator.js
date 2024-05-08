@@ -17,10 +17,10 @@ job.save((err) => {
   }
 });
 
-queue.on('complete', () => {
+job.on('complete', () => {
   console.log('Notification job completed');
 });
 
-queue.on('failed', () => {
+job.on('failed', () => {
   console.log('Notification job failed');
 });
